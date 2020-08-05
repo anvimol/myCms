@@ -79,6 +79,16 @@ function user_permissions() {
                 'category_delete' => 'Puede eliminar categorias.'
             ]
         ],
+        'users' => [
+            'icon' => '<i class="fas fa-user-friends"></i>',
+            'title' => 'Módulo de Usuarios',
+            'keys' => [
+                'user_list' => 'Puede ver el listado de usuarios.',
+                'user_edit' => 'Puede editar usuarios..',
+                'user_banned' => 'Puede banear usuarios.',
+                'user_permissions' => 'Puede administrar permisos de usuarios.'
+            ]
+        ]
     ];
 
     return $p;
