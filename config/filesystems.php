@@ -60,6 +60,11 @@ return [
             'root' => '/home/vagrant/code/mycms/public/uploads'
         ],
 
+        'uploads_users' => [
+            'driver' => 'local',
+            'root' => '/home/vagrant/code/mycms/public/uploads_users'
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

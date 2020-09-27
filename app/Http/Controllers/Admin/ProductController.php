@@ -36,7 +36,6 @@ class ProductController extends Controller
                 $products = Product::with(['cat'])->onlyTrashed()->orderBy('id', 'desc')->paginate(8);
                 break;
         }
-        
         $data = ['products' => $products];
         return view('admin.products.home', $data);
     }
@@ -283,7 +282,7 @@ class ProductController extends Controller
 
         if ($validator->fails()) 
         {
-            return back()
+            return redirect('/admin/products/1')
                     ->withErrors($validator)
                     ->with('message', 'Se ha producido un error')
                     ->with('typealert', 'danger')

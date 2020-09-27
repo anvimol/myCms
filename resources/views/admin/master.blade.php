@@ -20,8 +20,8 @@
     <script src="https://kit.fontawesome.com/bf3fed8ca8.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
     <script src="{{ url('/static/libs/ckeditor/ckeditor.js') }}"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="{{ url('/static/js/admin.js?v='.time()) }}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         $(document).ready(function() {
             $('[data-toggle="tooltip"]').tooltip()

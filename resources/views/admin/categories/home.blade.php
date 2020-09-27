@@ -83,7 +83,7 @@
                                                 </a>
                                                 @endif
                                                 @if (kvfj(Auth::user()->permissions, 'category_delete'))
-                                                <a href="{{ url('/admin/category/'.$cat->id.'/delete') }}" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                <a href="#" data-path="admin/category" data-action="delete" data-object="{{ $cat->id }}" data-toggle="tooltip" data-placement="top" title="Eliminar" class="btn_delete">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </a>
                                                 @endif

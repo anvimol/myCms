@@ -3,7 +3,6 @@ var route = document.getElementsByName('routeName')[0].getAttribute('content');
 
 // Boton galeria en editar producto
 document.addEventListener('DOMContentLoaded', function(){
-
     var btn_search = document.getElementById('btn_search');
     var form_search = document.getElementById('form_search');
     if (btn_search) {
@@ -33,9 +32,10 @@ document.addEventListener('DOMContentLoaded', function(){
     route_active = document.getElementsByClassName('lk-'+route)[0].classList.add('active');
 
     btn_delete = document.getElementsByClassName('btn_delete');
+    
     for (i = 0; i < btn_delete.length; i++) {
         btn_delete[i].addEventListener('click', delete_object);
-    }
+    } 
 });
 
 $(document).ready(function() {
@@ -61,7 +61,7 @@ function delete_object(e) {
     var title, texto, icono;
     if (action == "delete") {
         title = "¿Estas seguro de eliminar este elemento?";
-        texto = "Esto ara un borrado lógico del elemento, podrá restaurarlo si lo necesita.";
+        texto = "Esto realizara un borrado lógico del elemento, podrá restaurarlo si lo necesita.";
         icono = "warning";
     }
     if (action == "restore") {
@@ -79,7 +79,6 @@ function delete_object(e) {
     .then((willDelete) => {
         if (willDelete) {
             window.location.href = url;
-        
         } 
-    });
+    });  
 }

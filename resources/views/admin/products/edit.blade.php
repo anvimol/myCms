@@ -144,25 +144,19 @@
                     <h2 class="title"><i class="far fa-images"></i> Galeria</h2>
                 </div>
                 <div class="inside product_gallery">
-                    @if (kvfj(Auth::user()->permissions, 'product_gallery_add'))
-                        {!! Form::open(['url' => '/admin/product/' . $product->id . '/gallery/add', 'files' => true, 'id' => 'form_product_gallery']) !!}
-                            {!! Form::file('file_image', ['id' => 'product_file_image', 'accept' => 'image/*', 'style' => 'display: none;', 'required']) !!}
-                        {!! Form::close() !!}
-                        <div class="btn-submit">
-                            <a href="#" id="btn_product_file_image"><i class="fas fa-plus"></i></a>
-                        </div>
-                    @endif
+                    {!! Form::open(['url' => '/admin/product/' . $product->id . '/gallery/add', 'files' => true, 'id' => 'form_product_gallery']) !!}
+                        {!! Form::file('file_image', ['id' => 'product_file_image', 'accept' => 'image/*', 'style' => 'display: none;', 'required']) !!}
+                    {!! Form::close() !!}
+                    <div class="btn-submit">
+                        <a href="#" id="btn_product_file_image"><i class="fas fa-plus"></i></a>
+                    </div>
 
                     <div class="tumbs">
                         @foreach ($product->getGallery as $img)
                             <div class="tumb">
-                                @if (kvfj(Auth::user()->permissions, 'product_
-                                
-                                <div class=""></div>gallery_delete'))
                                 <a href="{{ url('/admin/product/'. $product->id .'/gallery/'.$img->id.'/delete') }}" data-toggle="tooltip" data-placement="top" title="Eliminar">
                                     <i class="fas fa-trash-alt"></i>
                                 </a>
-                                @endif
                                 <img src="{{ url('/uploads/'.$img->file_path.'/t_'.$img->file_name) }}" width="200">
                             </div>
                         @endforeach
