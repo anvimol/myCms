@@ -69,16 +69,19 @@ function delete_object(e) {
         texto = "Esta acción restaurará este elemento, estara nuevamente activo en la base de datos.";
         icono = "info";
     }
-    swal({
+
+    Swal.fire({
         title: title,
         text: texto,
         icon: icono,
-        buttons: true,
-        dangerMode: true,
-    })
-    .then((willDelete) => {
-        if (willDelete) {
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes'
+      }).then((result) => {
+        if (result.isConfirmed) {
             window.location.href = url;
-        } 
-    });  
+        }
+      });
+
 }
