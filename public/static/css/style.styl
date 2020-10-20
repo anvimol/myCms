@@ -3,7 +3,7 @@ color2 = #fdd700
 color3 = #334F9A
 
 body
-    background-color #f9f9f9
+    background-color #f4f4f4
     font-size 14px
     font-family: 'Roboto', sans-serif;
 
@@ -31,6 +31,13 @@ nav
     .navbar-brand
         img 
             width 120px
+    .navbar-toggler
+        color color1
+        &:active
+        &:focus
+            box-shadow none
+            outline none
+
     .navbar-nav
         li.nav-item
             a.nav-link
@@ -188,6 +195,98 @@ nav
             &:hover
                 background-color color3
                 color #FFF
+
+.home_action_bar
+    background-color 
+    border 1px solid #d6d6d6
+    border-radius 4px
+    margin-top 24px
+    padding 12px
+    .categories
+        position relative
+        a 
+            background-color #111111
+            border-radius 4px
+            color #FFF
+            display block
+            padding 12px
+            text-decoration none
+            text-transform uppercase
+            width 100%
+            &:hover
+                background-color color1
+        &:active
+        &:focus
+            a 
+                background-color color1
+        &:hover
+            ul 
+                display block
+        ul 
+            display none
+            list-style none
+            margin 0px 
+            padding 0px
+            position absolute
+            width 100%
+            li 
+                a
+                    background-color #f8f8f8
+                    border-radius 0px
+                    color #111111
+                    img 
+                        width 24px
+                    &:hover
+                        color #FFF
+
+@media only screen and (max-width 728px)
+    nav 
+        .navbar-nav
+            display block !important 
+            margin-top 16px
+            overflow hidden
+            li.nav-item
+                float left
+                display block
+                margin-right 0px
+                margin-bottom 12px
+                width 50%
+                a.nav-link
+                    text-align center
+                    span 
+                        display block
+                        font-size 1em
+                        font-weight normal
+                        margin-top 4px
+                        width 100%
+                    i  
+                        font-size 3em
+                &:last-child
+                    float inline-end
+                    width 100%
+            li.link-acc
+                a
+                    font-size 1.2em
+                    width 50% !important
+                    i
+                        font-size 1em !important
+            li.link-user
+                border 1px solid #d6d6d6 !important
+                border-radius 6px
+                padding 8px
+                a
+                    display block
+                    font-siza 1.2em
+                    width 100% !important
+                    img 
+                        width 36px
+                ul.dropdown-menu
+                    top 0px !important
+                    hr.dropdown-divider
+                        display none
+                ul.shadow 
+                    box-shadow none !important
+
 
     
 

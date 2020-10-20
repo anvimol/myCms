@@ -33,11 +33,12 @@
                         </div>
 
                         <label for="icon" class="mtop16">Ícono:</label> 
-                        <div class="input-group">
-                            <span class="input-group-text" id="basic-addon1">
-                                <i class="fas fa-keyboard"></i>
-                            </span>
-                            {!! Form::text('icon', $cat->icon, ['class'=>'form-control',]) !!}
+                        <div class="form-file">
+                            {!! Form::file('icon', ['class' => "form-file-input", 'id' => "customFile", 'accept' => 'image/*']) !!}
+                            <label class="form-file-label" for="customFile">
+                                <span class="form-file-text">Choose file...</span>
+                                <span class="form-file-button">Browse</span>
+                            </label>
                         </div>
 
                         {{ Form::submit('Guardar', ['class' => 'btn btn-success mtop16']) }}
@@ -45,6 +46,20 @@
                     </div>
                 </div>
             </div>
+
+            @if (!is_null($cat->icon))
+            <div class="col-md-3">
+                <div class="panel shadow">
+                    <div class="header">
+                        <h2 class="title"><i class="fas fa-edit"></i> Icono</h2>
+                    </div>
+
+                    <div class="inside">
+                    <img src="{{ url('/uploads/'.$cat->file_path.'/'.$cat->icon) }}" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            @endif
         </div>
     </div>
 @endsection

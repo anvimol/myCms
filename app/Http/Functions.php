@@ -88,6 +88,20 @@ function user_permissions() {
                 'user_banned' => 'Puede banear usuarios.',
                 'user_permissions' => 'Puede administrar permisos de usuarios.'
             ]
+        ],
+        'settings' => [
+            'icon' => '<i class="fas fa-cogs"></i>',
+            'title' => 'Módulo de Configuraciones',
+            'keys' => [
+                'settings' => 'Puede modificar la configuración'
+            ]
+        ],
+        'orders' => [
+            'icon' => '<i class="fas fa-clipboard-list"></i>',
+            'title' => 'Módulo de Ordenes',
+            'keys' => [
+                'orders_list' => 'Puede ver el listado de ordenes'
+            ]
         ]
     ];
 

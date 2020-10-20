@@ -36,11 +36,12 @@
                         </div>
 
                         <label for="icon" class="mtop16">Ícono:</label> 
-                        <div class="input-group">
-                            <span class="input-group-text" id="basic-addon1">
-                                <i class="fas fa-keyboard"></i>
-                            </span>
-                            {!! Form::text('icon',null,['class'=>'form-control']) !!}
+                        <div class="form-file">
+                            {!! Form::file('icon', ['class' => "form-file-input", 'required', 'id' => "customFile", 'accept' => 'image/*']) !!}
+                            <label class="form-file-label" for="customFile">
+                                <span class="form-file-text">Choose file...</span>
+                                <span class="form-file-button">Browse</span>
+                            </label>
                         </div>
 
                         {!! Form::submit('Guardar', ['class' => 'btn btn-success mtop16']) !!}
@@ -65,15 +66,18 @@
                         <table class="table mtop16">
                             <thead>
                                 <tr>
-                                    <th width="32"></th>
+                                    <th width="48"></th>
                                     <th>Nombre</th>
                                     <th width="140"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($cats as $cat)
-                                    <tr>
-                                        <td>{!! htmlspecialchars_decode($cat->icon) !!}</td>
+                                        <td>
+                                            @if (!is_null($cat->icon))
+                                            <img src="{{ url('/uploads/'.$cat->file_path.'/'.$cat->icon) }}" class="img-fluid">
+                                            @endif
+                                        </td><!-- {!! htmlspecialchars_decode($cat->icon) !!} -->
                                         <td>{{ $cat->name }}</td>
                                         <td>
                                             <div class="opts">

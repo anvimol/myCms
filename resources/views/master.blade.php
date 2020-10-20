@@ -34,33 +34,33 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg shadow">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}"><img src="{{ url('/static/images/logo.png') }}" ></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigationMain" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
             </button>
 
-            <div class="collapse navbar-collapse">
+            <div class="collapse navbar-collapse" id="navigationMain">
                 <ul class="navbar-nav ml-auto"> {{-- enlaces de derecha a izquierda --}}
                     <li class="nav-item">
-                        <a href="{{ url('/') }}" class="nav-link"><i class="fas fa-home"></i> Inicio</a>
+                        <a href="{{ url('/') }}" class="nav-link"><i class="fas fa-home"></i><span> Inicio</span></span></a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ url('/store') }}" class="nav-link"><i class="fas fa-store-alt"></i> Tienda</a>
+                        <a href="{{ url('/store') }}" class="nav-link"><i class="fas fa-store-alt"></i><span> Tienda</span></a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ url('/') }}" class="nav-link"><i class="fas fa-id-card-alt"></i> Nosotros</a>
+                        <a href="{{ url('/') }}" class="nav-link"><i class="fas fa-id-card-alt"></i><span> Nosotros</span></a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ url('/') }}" class="nav-link"><i class="far fa-envelope-open"></i> Contacto</a>
+                        <a href="{{ url('/') }}" class="nav-link"><i class="far fa-envelope-open"></i><span> Contacto</span></a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ url('/car') }}" class="nav-link"><i class="fas fa-shopping-cart"></i> <span class="carnumber">0</span></a>
+                        <a href="{{ url('/car') }}" class="nav-link"><i class="fas fa-shopping-cart"></i><span> <span class="carnumber">0</span></a>
                     </li>
                     
                     @if (Auth::guest())

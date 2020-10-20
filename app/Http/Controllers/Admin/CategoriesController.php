@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Validator, Str;
+use Validator, Str, Config;
 
 use App\Http\Models\Category;
 
@@ -45,13 +45,23 @@ class CategoriesController extends Controller
                     ->with('message', 'Se ha producido un error')
                     ->with('typealert', 'danger');
         } else {
+            $path = '/'.date('Y-m-d');
+            $fileExt = trim($request->file('icon')->getClientOriginalExtension());
+            $upload_path = Config::get('filesystems.disks.uploads.root');
+            $name = Str::slug(str_replace($fileExt, '', $request->file('icon')->getClientOriginalName()));
+            $filename = rand(1,999).'-'.$name.'.'.$fileExt;
+
             $category = new Category();
             $category->module = $request->input('module');
             $category->name = e($request->input('name'));
             $category->slug = Str::slug($request->input('name'));
-            $category->icon = e($request->input('icon')); 
+            $category->file_path = date('Y-m-d');
+            $category->icon = $filename;
             
             if ($category->save()) {
+                if($request->hasFile('icon')) {
+                    $fl = $request->icon->storeAs($path, $filename, 'uploads');
+                }
                 return back()
                     ->with('message', 'Categoría guardada con exito')
                     ->with('typealert', 'success');
@@ -68,13 +78,11 @@ class CategoriesController extends Controller
 
     public function postCategoryEdit(Request $request, $id) {
         $rules = [
-            'name' => 'required',
-            'icon' => 'required'
+            'name' => 'required'
         ];
 
         $messages = [
-            'name.required' => 'El campo nombre no puede estar vacio.',
-            'icon.required' => 'Se requiere un icono para la catagoría.'
+            'name.required' => 'El campo nombre no puede estar vacio.'
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -90,7 +98,22 @@ class CategoriesController extends Controller
             $category->module = $request->input('module');
             $category->name = e($request->input('name'));
             $category->slug = Str::slug($request->input('name')); // Ojo con este campo
-            $category->icon = e($request->input('icon')); 
+            if($request->hasFile('icon')) {
+                $actual_icon = $category->icon;
+                $actual_file_path = $category->file_path;
+                $path = '/'.date('Y-m-d');
+                $fileExt = trim($request->file('icon')->getClientOriginalExtension());
+                $upload_path = Config::get('filesystems.disks.uploads.root');
+                $name = Str::slug(str_replace($fileExt, '', $request->file('icon')->getClientOriginalName()));
+                $filename = rand(1,999).'-'.$name.'.'.$fileExt;
+                $fl = $request->icon->storeAs($path, $filename, 'uploads');
+                $category->file_path = date('Y-m-d');
+                $category->icon = $filename; 
+                if (!is_null($actual_icon)) {
+                    unlink($upload_path.'/'.$actual_file_path.'/'.$actual_icon);
+                }
+                
+            }
             
             if ($category->save()) {
                 return back()

@@ -35,9 +35,21 @@
                 </li>
             @endif
 
+            @if (kvfj(Auth::user()->permissions, 'orders_list'))
+                <li>
+                    <a href="{{ url('/admin/orders/all') }}" class="lk-orders_list"><i class="fas fa-clipboard-list"></i> Ordenes</a>
+                </li>
+            @endif
+
             @if (kvfj(Auth::user()->permissions, 'user_list'))
                 <li>
                     <a href="{{ url('/admin/users/all') }}" class="lk-user_list lk-user_edit lk-user_permissions"><i class="fas fa-user-friends"></i> Usuarios</a>
+                </li>
+            @endif
+
+            @if (kvfj(Auth::user()->permissions, 'settings'))
+                <li>
+                    <a href="{{ url('/admin/settings') }}" class="lk-settings"><i class="fas fa-cogs"></i> Configuraciones</a>
                 </li>
             @endif
         </ul>

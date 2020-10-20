@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFilePhoneYearGender extends Migration
+class AddFieldFilePathToCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class AddFilePhoneYearGender extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('phone')->after('avatar')->nullable();
-            $table->date('birthday')->after('phone')->nullable();
-            $table->integer('gender')->after('birthday')->nullable();
+        Schema::table('categories', function (Blueprint $table) {
+            $table->string('file_path')->after('slug')->nullable();
         });
     }
 
@@ -27,7 +25,7 @@ class AddFilePhoneYearGender extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('categories', function (Blueprint $table) {
             //
         });
     }
